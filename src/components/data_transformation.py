@@ -46,8 +46,8 @@ class DataTransformation:
                 ('scaler', StandardScaler(with_mean=False))
             ])
 
-            logging.info("Numeraical columns standard scaling completed")
-            logging.info("Categorical columns encoding completed")
+            logging.info(f"Categorical columns: {categorical_columns}")
+            logging.info(f"Numerical columns: {numerical_columns}")
 
             preprocessor = ColumnTransformer([
                 ('num_pipeline', num_pipeline, numerical_columns),
@@ -64,8 +64,6 @@ class DataTransformation:
             test_df = pd.read_csv(test_path)
 
             logging.info("Read train and test data completed")
-            logging.info(f"Train DataFrame Head: \n{train_df.head().to_string()}")
-            logging.info(f"Test DataFrame Head: \n{test_df.head().to_string()}")
 
             logging.info("Obtaining preprocessing object")
 
